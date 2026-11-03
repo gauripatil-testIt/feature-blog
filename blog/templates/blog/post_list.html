@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1>Blog</h1>
+{% if posts %}
+  {% for post in posts %}
+    <article>
+      <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+      <p>{{ post.published_at|date:"N j, Y" }}</p>
+    </article>
+  {% endfor %}
+{% else %}
+  <p>No published posts yet.</p>
+{% endif %}
+{% endblock %}
