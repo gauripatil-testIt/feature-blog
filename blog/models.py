@@ -18,3 +18,10 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("blog:detail", args=(self.slug,))
+
+
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email

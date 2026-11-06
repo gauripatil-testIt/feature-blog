@@ -4,6 +4,16 @@
 
 {% block content %}
 <h1>Blog</h1>
+{% if notice %}
+  <p>{{ notice }}</p>
+{% endif %}
+<form action="{% url 'blog:index' %}" method="post">
+  {% csrf_token %}
+  {{ form.email.label_tag }}
+  {{ form.email }}
+  {{ form.email.errors }}
+  <button type="submit">Subscribe</button>
+</form>
 {% if posts %}
   {% for post in posts %}
     <article>
